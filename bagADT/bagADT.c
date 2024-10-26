@@ -68,8 +68,7 @@ bList newMostPopular(bList primer, unsigned int oldPopularity) {
         if (new->info.apariciones < primer->info.apariciones) {
             new = primer;
         }
-        if (new->info.apariciones - 1 == oldPopularity)
-            return new;
+        if (new->info.apariciones == oldPopularity) return new;
         primer = primer->siguiente;
     }
     return new;
@@ -105,7 +104,7 @@ unsigned int delete(bagADT bag, elemType elem) {
     // En este caso si despues de liberar no le asigno NULL a bag->mostPopular, podria estar desref
     // algo que esta liberado
     if (oldPopularity > bag->mostPopular->info.apariciones) {
-        bag->mostPopular = newMostPopular(bag->primer, bag->mostPopular->info.apariciones);
+        bag->mostPopular = newMostPopular(bag->primer, oldPopularity);
     }
     return apariciones;
 }

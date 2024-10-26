@@ -26,19 +26,22 @@ int main(void) {
 	assert( count(bag, "belen") == 1 );
 	assert( size(bag) == 5 );
 	assert( strcasecmp(mostPopular(bag), "carla") == 0 );
+        assert(add(bag, "agustina") == 3);
+        assert(add(bag, "aa") == 1);
+        assert(add(bag, "aa") == 2);
+        assert(delete(bag, "carla") == 2);
+        assert(strcasecmp(mostPopular(bag), "agustina") == 0);
 
     for(int i=2; i <= 10001; i++)
         assert( add(bag, "belen") == i );
-    assert(count(bag, "carla") == 3);
+    assert(count(bag, "carla") == 2);
     assert(count(bag, "belen") ==10001);
     assert( strcasecmp(mostPopular(bag), "belen") == 0 );
 
-    assert(delete(bag, "carla") == 2);
-    assert( size(bag) == 5 );
     assert(delete(bag, "carla") == 1);
-    assert( size(bag) == 5 );
+    assert( size(bag) == 6 );
     assert(delete(bag, "carla") == 0);
-    assert( size(bag) == 4 );
+    assert( size(bag) == 5 );
     assert(delete(bag, "carla") == 0);
 
 
@@ -55,3 +58,4 @@ int main(void) {
     freeBag(bag);
     return 0;
 }
+
